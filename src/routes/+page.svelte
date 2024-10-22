@@ -12,7 +12,7 @@
 
     async function getUniversities(page) {
         const results = await pb.collection('university_average').getList(page, 10, {
-            sort: 'average_rating',
+            sort: '-average_rating',
         })
         return results
     }

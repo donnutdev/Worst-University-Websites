@@ -30,6 +30,13 @@ const authorization: Handle = async ({ event, resolve }) => {
         return redirect(303, '/auth/login')
     } else if (!event.locals.user?.verified && protected_routes.filter(route => event.url.pathname.startsWith(route)).length > 0) {
         return redirect(303, '/auth/verify')
+    } else if (event.locals.user) {
+        if (event.locals.user.verified && event.url.pathname.startsWith("/auth/verify")) {
+            return redirect(303, '/rate')
+        }
+        if (event.locals.user && (event.url.pathname.startsWith("/auth/login") || event.url.pathname.startsWith("/auth/signup"))) {
+            return redirect(303, '/rate')
+        }
     }
 
     return resolve(event)

@@ -37,7 +37,7 @@
                 <th class="hidden sm:block"></th>
                 <th>Name</th>
                 <th>Rating</th>
-                <th>Web Pages</th>
+                <th>Sites</th>
             </tr>
             </thead>
             <tbody>

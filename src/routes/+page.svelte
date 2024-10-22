@@ -30,7 +30,7 @@
         </div>
     {:then universities}
         <table class="table-sm sm:table mx-auto">
-            <caption>Higher rating = better website</caption>
+            <caption>Higher rating = worse website</caption>
             <!-- head -->
             <thead>
             <tr>

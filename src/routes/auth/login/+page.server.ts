@@ -20,7 +20,7 @@ export const actions = {
             }
         }catch (e) {
             console.log(e)
-            return message(form, e.data.data)
+            return message(form, e.data?.data)
         }
 
         redirect(303, '/rate')

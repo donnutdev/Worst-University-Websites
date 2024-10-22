@@ -25,7 +25,7 @@
         canonical="https://worstuniversitywebsites.com/",
         openGraph={{
             title: "The List",
-            description: "This is a list of universities with the WORST websites. The #1 university with the worst website is {() => getUniversities(page).then(universities => universities.items.length > 0 ? universities.items[0].university_name : '...')}",
+            description: `This is a list of universities with the WORST websites. The #1 university with the worst website is ${getUniversities(page).then(universities => universities.items.length > 0 ? universities.items[0].university_name : '...')}`,
             url: "https://worstuniversitywebsites.com/",
             siteName: "Worst University Websites",
         }}

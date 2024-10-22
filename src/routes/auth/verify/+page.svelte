@@ -5,6 +5,8 @@
 
     export let data;
 
+    console.log(data);
+
     let {last_email} = data;
     let sending = false;
 

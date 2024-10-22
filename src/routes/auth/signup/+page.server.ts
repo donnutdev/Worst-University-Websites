@@ -28,7 +28,7 @@ export const actions = {
             await locals.pb.collection('users').authWithPassword(form.data.email, form.data.password)
         }catch (e) {
             console.log(e.data)
-            return message(form, e.data.data)
+            return message(form, e.data?.data)
         }
 
         return redirect(303, '/auth/verify')

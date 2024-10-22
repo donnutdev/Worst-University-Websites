@@ -12,8 +12,15 @@
     const webPageRegex = /(https|http):\/\/(.*)\//
 
     async function getUniversities() {
-        const results = await pb.collection('university_average').getFullList({
-            sort: '-average_rating && -total_ratings',
+        let results = await pb.collection('university_average').getFullList({
+            sort: '-average_rating',
+        })
+        // sort by average_rating and total_ratings
+        results = results.sort((a, b) => {
+            if (a.average_rating === b.average_rating) {
+                return b.total_ratings - a.total_ratings
+            }
+            return a.average_rating - b.average_rating
         })
         return results
     }
@@ -23,11 +30,11 @@
 
 <MetaTags
         title="Worst University Websites"
-        description="This is a list of universities with the WORST websites. The #1 university with the worst website is {() => list.then(universities => universities.length > 0 ? universities[0].university_name : '...')}"
-        canonical="https://worstuniversitywebsites.com/",
+        description="This is a list of universities with the WORST websites."
+        canonical="https://worstuniversitywebsites.com/"
         openGraph={{
             title: "The List",
-            description: `This is a list of universities with the WORST websites. The #1 university with the worst website is ${list.then(universities => universities.length > 0 ? universities[0].university_name : '...')}`,
+            description: `This is a list of universities with the WORST websites.`,
             url: "https://worstuniversitywebsites.com/",
             siteName: "Worst University Websites",
         }}

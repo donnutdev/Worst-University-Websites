@@ -7,7 +7,7 @@
 
     async function getUniversityData() {
         const results = await pb.collection('university_average').getFullList({
-            sort: 'average_rating',
+            sort: '-average_rating',
         })
         let university = results.find((item) => item.id === $page.params.id)
         if (!university) {

@@ -50,9 +50,9 @@
                 <label for="rating">Website Rating</label>
                 <input name="rating" type="range" min="0" max="100" class="range" step="5" bind:value={$form.rating}/>
                 <div class="flex w-full justify-between px-2 text-xs">
+                    <span>Decent</span>
                     <span>Bad</span>
-                    <span>Okayish</span>
-                    <span>Good</span>
+                    <span>Terrible</span>
                 </div>
                 {#if $errors.rating}
                     <p class="text-xs text-red-600">{$errors.rating}</p>

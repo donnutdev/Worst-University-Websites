@@ -11,21 +11,23 @@
 
     const webPageRegex = /(https|http):\/\/(.*)\//
 
-    async function getUniversities(page) {
-        const results = await pb.collection('university_average').getList(page, 10, {
-            sort: '-average_rating',
+    async function getUniversities() {
+        const results = await pb.collection('university_average').getFullList({
+            sort: '-average_rating && -total_ratings',
         })
         return results
     }
+
+    const list = getUniversities()
 </script>
 
 <MetaTags
         title="Worst University Websites"
-        description="This is a list of universities with the WORST websites. The #1 university with the worst website is {() => getUniversities(page).then(universities => universities.items.length > 0 ? universities.items[0].university_name : '...')}"
+        description="This is a list of universities with the WORST websites. The #1 university with the worst website is {() => list.then(universities => universities.length > 0 ? universities[0].university_name : '...')}"
         canonical="https://worstuniversitywebsites.com/",
         openGraph={{
             title: "The List",
-            description: `This is a list of universities with the WORST websites. The #1 university with the worst website is ${getUniversities(page).then(universities => universities.items.length > 0 ? universities.items[0].university_name : '...')}`,
+            description: `This is a list of universities with the WORST websites. The #1 university with the worst website is ${list.then(universities => universities.length > 0 ? universities[0].university_name : '...')}`,
             url: "https://worstuniversitywebsites.com/",
             siteName: "Worst University Websites",
         }}
@@ -37,7 +39,7 @@
         <a class="btn btn-sm btn-primary" href="/rate">Submit your own university rating<MdiArrowRight/></a>
     </div>
     <div class="divider"></div>
-    {#await getUniversities(page)}
+    {#await list}
         <div class="flex justify-center items-center mt-10">
             <span class="loading loading-spinner loading-lg"></span>
         </div>
@@ -55,11 +57,11 @@
             </thead>
             <tbody>
 
-            {#each universities.items as university, index (university.id)}
+            {#each universities as university, index (university.id)}
                 <tr class="hover">
                     <th class="hidden sm:block">#{index+1}</th>
                     <td role="button" on:click={() => goto(`/university/${university.id}`)}>{university.university_name}</td>
-                    <td>{university.average_rating}/100</td>
+                    <td>{university.average_rating}/100 ({university.total_ratings})</td>
                     <td class="inline-flex flex-wrap gap-1">
                         {#each university.web_pages as web_page (web_page)}
                             <a href={web_page} target="_blank" class="link">{webPageRegex.exec(web_page)["2"]}</a>

@@ -5,7 +5,7 @@
 
     const {form, errors, message} = superForm(data.form)
 
-    console.log($message)
+    $: console.log($message)
 </script>
 
 <div class="sm:container sm:mx-auto mx-5 mt-5 flex flex-col justify-center gap-5">

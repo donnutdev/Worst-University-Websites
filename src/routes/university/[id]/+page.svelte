@@ -14,7 +14,6 @@
             throw new Error('University not found')
         }
         university.overall_rank = results.findIndex((item) => item.id === $page.params.id) + 1
-        console.log(results)
         return university
     }
 
@@ -25,7 +24,6 @@
             filter: `university="${$page.params.id}"`,
             sort: '-created'
         })
-        console.log(results)
         return results
     }
 

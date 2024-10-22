@@ -2,7 +2,6 @@ import type {LayoutServerLoad} from "../../../../.svelte-kit/types/src/routes/$t
 import {redirect} from "@sveltejs/kit";
 
 export const load: LayoutServerLoad = async ({locals}) => {
-    console.log("Loading Verification")
     const last_email = await locals.pb.collection("verification_emails").getFirstListItem(`user="${locals.user?.id}"`)
     if (locals.user == null || locals.user?.verified) {
         return redirect(303, '/')

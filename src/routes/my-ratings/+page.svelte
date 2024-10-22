@@ -11,8 +11,6 @@
 
     $: (ratings = data.ratings);
 
-    console.log(ratings)
-
     const onDelete = (id) => {
         deleting = id
         return ({result, update}) => {

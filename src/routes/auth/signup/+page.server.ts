@@ -13,8 +13,6 @@ export const actions = {
     default: async ({locals, request}) => {
         const form = await superValidate(request, joi(signupSchema))
 
-        console.log(form.data)
-
         if (!form.valid) {
             return fail(400, { form })
         }

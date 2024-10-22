@@ -23,6 +23,6 @@ export const actions = {
             return message(form, e.data.data)
         }
 
-        redirect(303, '/rank')
+        redirect(303, '/rate')
     }
 }

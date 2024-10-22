@@ -1,5 +1,6 @@
 <script lang="ts">
     import {superForm} from "sveltekit-superforms";
+    import {MetaTags} from "svelte-meta-tags";
 
     export let data;
 
@@ -18,6 +19,18 @@
 
     $: console.log($message)
 </script>
+
+<MetaTags
+        title="Add a Rating"
+        description="Rate a university's website which you think is bad so it is on the list."
+        canonical="https://worstuniversitywebsites.com/rate"
+        openGraph={{
+            title: "Add a Rating",
+            description: `Rate a university's website which you think is bad so it is on the list.`,
+            url: "https://worstuniversitywebsites.com/rate",
+            siteName: "Worst University Websites",
+        }}
+/>
 
 <div class="sm:container sm:mx-auto mx-5 mt-5 my-20 flex flex-col justify-center gap-5">
     <h1 class="text-xl w-full mx-auto text-center sm:text-3xl">Submit your own university website rating</h1>

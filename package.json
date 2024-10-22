@@ -21,6 +21,7 @@
 		"joi": "^17.13.3",
 		"svelte": "^4.2.7",
 		"svelte-check": "^4.0.0",
+		"svelte-meta-tags": "^3.1.4",
 		"sveltekit-superforms": "^2.20.0",
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.0.0",

@@ -1,6 +1,7 @@
 <script>
     import MdiArrowRight from "~icons/mdi/arrow-right"
     import {goto} from "$app/navigation";
+    import {MetaTags} from "svelte-meta-tags";
 
     export let data;
 
@@ -17,6 +18,18 @@
         return results
     }
 </script>
+
+<MetaTags
+        title="Worst University Websites"
+        description="This is a list of universities with the WORST websites. The #1 university with the worst website is {() => getUniversities(page).then(universities => universities.items.length > 0 ? universities.items[0].university_name : '...')}"
+        canonical="https://worstuniversitywebsites.com/",
+        openGraph={{
+            title: "The List",
+            description: "This is a list of universities with the WORST websites. The #1 university with the worst website is {() => getUniversities(page).then(universities => universities.items.length > 0 ? universities.items[0].university_name : '...')}",
+            url: "https://worstuniversitywebsites.com/",
+            siteName: "Worst University Websites",
+        }}
+/>
 
 <div class="sm:container sm:mx-auto mx-5 mt-5 mb-20 flex flex-col justify-center gap-5">
     <h1 class="text-xl w-full mx-auto text-center sm:text-3xl">Welcome to the list of universities with the <strong>worst websites!</strong></h1>

@@ -22,10 +22,10 @@ export const actions = {
         try {
             await locals.pb.collection('users').create(form.data)
             await locals.pb.collection('users').requestVerification(form.data.email)
+            await locals.pb.collection('users').authWithPassword(form.data.email, form.data.password)
             await locals.pb.collection('verification_emails').create({
                 user: locals.user?.id
             })
-            await locals.pb.collection('users').authWithPassword(form.data.email, form.data.password)
         }catch (e) {
             console.log(e.data)
             return message(form, e.data?.data)

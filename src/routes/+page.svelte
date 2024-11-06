@@ -20,7 +20,7 @@
             if (a.average_rating === b.average_rating) {
                 return b.total_ratings - a.total_ratings
             }
-            return a.average_rating - b.average_rating
+            return b.average_rating - a.average_rating
         })
         return results
     }
